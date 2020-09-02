@@ -65,18 +65,16 @@ $(function() {
         console.log($(this));
         var data = $('#form_login').serialize();
         $.post('/api/login', data, function(res) {
-                    console.log(res);
-                    if (res.status !== 0) {
-                        return layer.msg(res.message);
-                    }
-                    layer.msg(res.message);
-                    // 将服务器返回的用户唯一标识 保存到本地存储
-                    localStorage.setItem('token', res.token);
-                    // 跳转到后台主页
-                    // location.href = '/bigEvent/index.html';
+                console.log(res);
+                if (res.status !== 0) {
+                    return layer.msg(res.message);
                 }
-
-            )
+                layer.msg(res.message);
+                // 将服务器返回的用户唯一标识 保存到本地存储
+                localStorage.setItem('token', res.token);
+                // 跳转到后台主页
+                // location.href = '/bigEvent/index.html';
+            })
             // $.ajax({
             //     url: '/api/login',
             //     type: 'POST',
