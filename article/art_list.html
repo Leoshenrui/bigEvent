@@ -15,12 +15,10 @@
         <div class="layui-card-header">文章列表</div>
         <div class="layui-card-body">
             <!-- 筛选区 -->
-            <form class="layui-form" action="">
+            <form class="layui-form" id='form-search'>
                 <div class="layui-form-item layui-inline">
                     <select name="cate_id">
-                        <option value="">所有分类</option>
-                        <option value="010">ss</option>
-                        <option value="010">ss</option>
+                        
                       </select>
                 </div>
                 <div class="layui-form-item layui-inline">
@@ -58,10 +56,13 @@
                 </tbody>
             </table>
             <!-- 页面区 -->
+            <div id='pageBox'></div>
         </div>
     </div>
 
 
+
+    <!-- 获取文章列表数据 -->
     <script type='text/html' id="tpl-table">
         {{each data}}
         <tr>
@@ -71,9 +72,19 @@
             <td>{{$value.state}}</td>
             <td>
                 <button type="button" class="layui-btn layui-btn-xs layui-btn-danger">编辑</button>
-                <button type="button" class="layui-btn layui-btn-xs">删除</button>
+                <button type="button" class="layui-btn layui-btn-xs btn-delete" data-id="{{$value.Id}}">删除</button>
             </td>
         </tr>
+        {{/each}}
+    </script>
+
+
+
+    <!-- 分类可选项的结构模板 -->
+    <script type="text/html" id='tpl-cate'>
+        <option value="">所有分类</option>
+        {{each data}}
+        <option value="{{$value.Id}}">{{$value.name}}</option>
         {{/each}}
     </script>
 
